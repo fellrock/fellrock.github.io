@@ -159,6 +159,10 @@ input, select, textarea {
 		color: #666;
 	}
 
+	size-bt {
+		margin-bottom: 4em;
+	}
+
 	em, i {
 		font-style: italic;
 	}
