@@ -21,7 +21,7 @@
 	--preto:#000000fe;
     --pink3:#ea61defe;
 	--pink2:#ffbbeffe;
-	--pink1:#fff3fafe;
+	--pink1:#ffe6f4fe;
     --space1:#2c4d89fe;
 	--space2:#132b57fe;
     --space3:#233a73fe;
@@ -72,7 +72,7 @@ body{
 	display: inline-block;
 	font-size: 80px;
 	user-select: none;
-	line-height: 0.8;
+	line-height: 0.01;
 }
 
 @keyframes fadeIn {
@@ -96,7 +96,7 @@ body{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: 2%;
+	margin: 3%;
 	color: var(--pink1);
 	float: left;
 }
@@ -104,7 +104,8 @@ body{
 .word span {
 	cursor: pointer;
 	display: inline-block;
-	font-size: 80px;
+	font-size: 100px;
+	margin-left: 5%;
 	user-select: none;
 	line-height: 0.8;
 }
