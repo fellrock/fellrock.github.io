@@ -256,7 +256,16 @@ a {
 	text-decoration: none;
 	color: var(--pink1);
 	font-family: 'Luckiest Guy', cursive;
+	font-size: 22px;
 	cursor: pointer;
+}
+.donate-button img {
+	width: 120px;
+	margin-left: 10%;
+}
+
+.donate-button img:hover {
+	animation: balance-fish 1.5s linear infinite;
 }
 
 .fish-button img {
