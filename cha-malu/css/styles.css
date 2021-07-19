@@ -298,10 +298,9 @@ a {
 	justify-content: center;
 	animation: balance-fish 0.4s linear infinite;
 }
-
+/*imagem incial*/
 .submarine img {
 	width: 500px;
-	margin-left: -150px;
 }
 
 
@@ -362,7 +361,7 @@ a {
 
 .text-content {
     position: relative;
-	margin-bottom: 300px;
+	margin-bottom: 250px;
 	font-size: 22px;
 	display: flex;
 	flex-direction: column;
@@ -1502,7 +1501,7 @@ animation: move-wave 3s;
 	align-self: flex-end;
 	width: 100%;
 	padding: 1.5em 0 0 0;
-	color: rgba(255, 255, 255, 0.75);
+	color: rgb(255, 255, 255);
 	cursor: default;
 	text-align: center;
 }
@@ -1526,15 +1525,19 @@ animation: move-wave 3s;
 				border-left: 0;
 			}
 
-			footer {
-				margin: 0;
-				padding: 0;
-				border: 0;
-				font-size: 100%;
-				font: inherit;
-				vertical-align: baseline;
-			}
-		
-			footer {
-				display: block;
-			}			
+	footer {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		font-family: 'Ubuntu', sans-serif;
+		color: rgba(255, 255, 255, 0.822);
+		vertical-align: baseline;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		font-size: 26px;
+		line-height: 60px;
+	}
