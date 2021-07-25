@@ -988,12 +988,12 @@ animation: move-wave 3s;
 	}
 
 	.fish-button img {
-		width: 50px;	
+		width: 60px;	
 	}
 
 	.donate-button img {
-		width: 50px;
-		margin-left: 0;	
+		width: 65px;
+		margin-left: 30%;	
 	}
 
 	.word,
