@@ -955,6 +955,12 @@ animation: move-wave 3s;
 		margin-left: 5%;	
 	}
 
+	.submarine img {
+		width: 70%;
+		margin-left: 0;
+		margin-top: 10px;
+	}
+
 	.text-about p {
 		font-size: 12px;
 		line-height: 22px;
@@ -995,6 +1001,17 @@ animation: move-wave 3s;
 		width: 65px;
 		margin-left: 30%;	
 	}
+	.stone {
+		transform: scale(0.5);
+	}
+	
+	#stone1 {
+		transform: translateY(-500px) scale(0.7);
+	}
+
+	#stone3 {
+		transform: translateY(-500px) scale(0.5);
+	}
 
 	.word,
 	.menu {
@@ -1002,7 +1019,7 @@ animation: move-wave 3s;
 	}
 
 	.submarine img {
-		width: 65%;
+		width: 50%;
 		margin-left: 0;
 		margin-top: 20px;
 	}
