@@ -344,7 +344,6 @@ a {
 	background-color: rgba(255,255,255,0.75);
 	border-radius: 20px;
 	padding: 30px 60px;
-	font-size: 26px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -352,9 +351,21 @@ a {
 	color: #270258;
 }
 
+.text-about p {
+	text-align: justify;
+	font-size: 24px;
+}
+
 .text-about h2 {
 	font-size: 3em;
-	text-align: center;
+
+}
+
+.text-about h1 {
+	font-size: 30px;
+	margin-bottom: 0;
+	text-align: justify;
+
 }
 
 .text-content-head {
@@ -475,17 +486,18 @@ a {
 }
 
 .gift2 img{
-	width: 50%;
+	width: 60%;
 	display: flex;
-	margin: 0 auto 25px;
+	margin: 0 auto 20px;
 }
+/*
 .gift2 img:hover {
 	animation:  zoom2 0.5s alternate ease-in;
 	animation-fill-mode: forwards;
 	cursor: pointer;
 
 }
-
+*/
 
 .box-gift:nth-child(1) img:hover {
 	animation: jump 0.5s alternate infinite ease-in;
@@ -561,22 +573,22 @@ a {
 		transform: scale(1);
 	}
 	100% {
-		transform: translateY(-1vh) scale(1.8);
+		transform: translateY(-2vh) scale(1.8);
 		
 	}
 
 }
 
 
-.gift1 p,
-.gift1 h3,
-.gift1 strong {
+.gift1,.gift2 p,
+.gift1,.gift2 h3,
+.gift1,.gift2 strong {
 	font-family: 'Ubuntu', sans-serif;
 	color: #fff;
 	margin-top: 1%;
 }
 
-.gift1 strong {
+.gift1,.gift2 strong {
 	display: block;
 	text-align: center;
 	margin-top: 2%;
@@ -955,6 +967,7 @@ animation: move-wave 3s;
 		margin-left: 5%;	
 	}
 
+
 	.submarine img {
 		width: 70%;
 		margin-left: 0;
@@ -962,8 +975,10 @@ animation: move-wave 3s;
 	}
 
 	.text-about p {
-		font-size: 12px;
+		font-size: 22px;
 		line-height: 22px;
+		text-align: justify;
+	}
 	}
 
 	.button-about img {
@@ -988,6 +1003,18 @@ animation: move-wave 3s;
 
 
 @media (max-width: 425px) {
+
+	.about {
+		position: relative;
+		top:350px;
+		margin: 150px auto;
+		width: 60%;
+		font-size: 22px;
+		line-height: 28px;
+		color: #fff;
+		font-family: 'Ubuntu', sans-serif;
+	}
+
 	.word span {
 		font-size: 50px;
 		margin: 30px 0;
@@ -1039,14 +1066,16 @@ animation: move-wave 3s;
 	}
 
 	.text-about p {
-		font-size: 15px;
+		font-size: 20px;
+		text-align: justify;
+	}
 	}
 
 	.text-about h1,
 	.text-about h2 {
-		font-size: 22px;
+		font-size: 36px;
 		margin-bottom: 0;
-		text-align: center;
+		text-align: justify;
 	}
 
 	@keyframes zoom {
@@ -1103,6 +1132,11 @@ animation: move-wave 3s;
 		animation-fill-mode: forwards;
 		cursor: pointer;
 	
+	}
+
+
+	.gift2 img{
+		width: 20%;
 	}
 }
 
