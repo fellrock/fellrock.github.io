@@ -382,9 +382,13 @@ a {
 
 .text-content-head h1 {
 	font-size: 2em;
-	text-align: center;
+	text-align: justify;
 }
 
+
+.text-content-head p {
+	text-align: justify;
+}
 
 .text-content {
     position: relative;
@@ -402,6 +406,11 @@ a {
 .text-content h1 {
 	font-size: 2em;
 	text-align: center;
+}
+
+.text-content p {
+
+	text-align: justify;
 }
 
 .text-content h2 {
@@ -975,10 +984,19 @@ animation: move-wave 3s;
 	}
 
 	.text-about p {
-		font-size: 22px;
-		line-height: 22px;
+		
+		font-size: 26px;
+		line-height: 30px;
+		padding: 10px;
 		text-align: justify;
+		
 	}
+	
+	.text-about h1,
+	.text-about h2 {
+		font-size: 36px;
+		margin-bottom: 0;
+		text-align: justify;
 	}
 
 	.button-about img {
@@ -997,6 +1015,14 @@ animation: move-wave 3s;
 	.box-gift img {
 		width: 50%;
 	}
+
+
+	.about {
+		position: relative;
+		margin: 60px;
+		width: 90%;
+	}
+
 	
 	
 }
@@ -1004,16 +1030,6 @@ animation: move-wave 3s;
 
 @media (max-width: 425px) {
 
-	.about {
-		position: relative;
-		top:350px;
-		margin: 150px auto;
-		width: 60%;
-		font-size: 22px;
-		line-height: 28px;
-		color: #fff;
-		font-family: 'Ubuntu', sans-serif;
-	}
 
 	.word span {
 		font-size: 50px;
@@ -1056,20 +1072,21 @@ animation: move-wave 3s;
 	}
 
 	.about {
+		position: relative;
 		margin: 60px;
 		width: 90%;
 	}
 
 
 	.text-about {
-		padding: 20px;
+		padding: 10px;
 	}
 
 	.text-about p {
 		font-size: 20px;
 		text-align: justify;
 	}
-	}
+
 
 	.text-about h1,
 	.text-about h2 {
