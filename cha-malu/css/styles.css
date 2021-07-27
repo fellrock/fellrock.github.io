@@ -413,6 +413,11 @@ a {
 	text-align: justify;
 }
 
+
+.text-content a {
+	color: #ffffff;
+}
+
 .text-content h2 {
 	font-size: 2em;
 	text-align: center;
@@ -497,7 +502,7 @@ a {
 .gift2 img{
 	width: 60%;
 	display: flex;
-	margin: 0 auto 80px;
+	margin: 0 auto 20px;
 }
 /*
 .gift2 img:hover {
@@ -1023,8 +1028,10 @@ animation: move-wave 3s;
 		width: 90%;
 	}
 
-	
-	
+
+	.gift2 img{
+		margin: 0 auto 100px;
+	}
 }
 
 
@@ -1638,6 +1645,6 @@ animation: move-wave 3s;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		font-size: 26px;
+		font-size: 20px;
 		line-height: 60px;
 	}
