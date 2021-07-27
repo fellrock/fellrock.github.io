@@ -235,7 +235,6 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0;
 }
 
 p,
@@ -316,7 +315,7 @@ a {
 }
 /*imagem incial*/
 .submarine img {
-	width: 500px;
+	width: 300px;
 }
 
 
@@ -978,13 +977,13 @@ animation: move-wave 3s;
 
 	.donate-button img {
 		width: 80px;
-		margin-left: 5%;	
+		margin-left: 20%;	
 	}
 
 
 	.submarine img {
-		width: 70%;
-		margin-left: 0;
+		
+		margin-left: 200px;
 		margin-top: 10px;
 	}
 
@@ -1030,8 +1029,11 @@ animation: move-wave 3s;
 
 
 	.gift2 img{
-		margin: 0 auto 100px;
+		margin: 0 auto 20px;
 	}
+	
+	
+
 }
 
 
