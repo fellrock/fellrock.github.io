@@ -1045,6 +1045,30 @@ animation: move-wave 3s;
 		margin-left: 20%;	
 	}
 
+	.casal {
+		width: 330px;
+		height: 330px;
+	}
+
+	.column {
+		padding: 15px;
+	}
+
+	.casal img{
+		transform: scale(1.55);
+		margin-left: -35px;
+		margin-top: 60px;
+	}
+
+	.barriga {
+		width: 330px;
+		height: 330px;
+	}
+
+	.barriga img{
+		margin-left: -55px;
+		transform: scale(1.90);
+	}
 
 	.submarine img {
 		
