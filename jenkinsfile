@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Copiar os arquivos desejados
+                sh 'cp -R . /mnt/user/appdata/nginx/www'
+            }
+        }
+    }
+}
