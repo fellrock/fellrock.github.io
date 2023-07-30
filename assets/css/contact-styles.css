@@ -1,0 +1,13 @@
+.title {
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    font-size: 2em;
+    color:gray;
+}
+
+.title2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    text-transform: none;
+    color:rgb(98, 133, 85);
+}
