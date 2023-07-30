@@ -15,3 +15,20 @@
 .title3 {
     margin-top: -10px;
 }
+
+@media screen and (max-width: 1680px) {
+
+    .links {
+        width: max-content;
+        position: relative; left: -30px;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    .links {
+        position: -ms-page;
+    }
+
+}
