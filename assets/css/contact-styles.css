@@ -18,7 +18,7 @@
 
 @media screen and (max-width: 1680px) {
 				
-        .links {
+    .links {
         width: max-content;
         position: relative; left: -30px;
     }
@@ -26,10 +26,7 @@
 }
 
 @media screen and (max-width: 480px) {
-    
-	
     .links {
-        position: relative; left: -30px;
+        width: max-content;
     }
-    
 }
