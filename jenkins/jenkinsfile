@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     // Copy the contents to the specified folder on the Nginx server
-                    sh "curl -X PUT --data-binary @. http://$NGINX_IP:$NGINX_PORT/$TARGET_FOLDER"
+                    sh "curl -T . http://$NGINX_IP:$NGINX_PORT/$TARGET_FOLDER"
                 }
             }
         }
