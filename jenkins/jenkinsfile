@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    environment {
+        // Set the path where you want to copy the GitHub Pages contents
+        TARGET_FOLDER = '/mnt/user/appdata/nginx/www'
+        // Set the GitHub repository URL
+        GITHUB_REPO_URL = 'https://github.com/fellrock/fellrock.github.io.git'
+    }
+
+    stages {
+        stage('Clone GitHub Pages') {
+            steps {
+                // Clone the GitHub Pages repository
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: GITHUB_REPO_URL]]])
+            }
+        }
+
+        stage('Copy to Server') {
+            steps {
+                // Copy the contents to the specified folder on the home server
+                script {
+                    sh "cp -R . $TARGET_FOLDER"
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            // Actions to be performed if the build is successful
+            echo 'GitHub Pages content copied successfully!'
+        }
+        failure {
+            // Actions to be performed if the build fails
+            echo 'Build failed. Please check the logs for details.'
+        }
+    }
+}
