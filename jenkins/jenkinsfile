@@ -28,7 +28,10 @@ pipeline {
             steps {
                 script {
                     try {
-                        def curlOutput = sh(script: 'curl -T . http://172.17.0.5:80/mnt/user/appdata/nginx/www', returnStdout: true, returnStatus: true).trim()
+                        def curlCommand = 'curl -T . http://172.17.0.5:80/mnt/user/appdata/nginx/www'
+                        echo "Running command: ${curlCommand}"
+                        
+                        def curlOutput = sh(script: curlCommand, returnStdout: true, returnStatus: true).trim()
                         def curlExitCode = sh(script: 'echo $?', returnStatus: true).trim()
 
                         echo "curl result: ${curlExitCode}"
