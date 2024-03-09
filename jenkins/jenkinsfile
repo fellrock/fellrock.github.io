@@ -24,17 +24,14 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: GITHUB_REPO_URL]]])
             }
         }
-
         stage('Copy to Nginx Server') {
             steps {
                 script {
-                    // Copy the contents to the specified folder on the Nginx server
-                    def result = sh(script: "curl -T . http://$NGINX_IP:$NGINX_PORT/$TARGET_FOLDER", returnStatus: true)
-                    echo "curl result: ${result}"
-                    echo "curl output: ${result}"
-                    
-                    if (result != 0) {
-                        error "Failed to copy files to Nginx server. Check the logs for details."
+                    def curlOutput = sh(script: 'curl -T . http://172.17.0.5:80/mnt/user/appdata/nginx/www', returnStatus: true).trim()
+                    echo "curl result: ${curlOutput}"
+
+                    if (curlOutput != '0') {
+                        error "Failed to copy files to Nginx server. Check logs for details."
                     }
                 }
             }
