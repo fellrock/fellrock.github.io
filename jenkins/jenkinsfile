@@ -4,7 +4,7 @@ pipeline {
     environment {
         NGINX_IP = '172.17.0.5'
         NGINX_PORT = '80'
-        TARGET_FOLDER = '/mnt/user/appdata/nginx/www'  // Corrigido o caminho da pasta
+        WWW_PATH = '/mnt/user/appdata/nginx/www'  // Corrigido o caminho da pasta
         GITHUB_REPO_URL = 'https://github.com/fellrock/fellrock.github.io.git'
     }
 
@@ -19,8 +19,8 @@ pipeline {
         stage('Copy to Nginx Server') {
             steps {
                 script {
-                    // Use rsync to copy files to the specified folder on the Nginx server
-                    sh "rsync -av . $NGINX_IP:$TARGET_FOLDER"
+                    // Use rsync to copy files to the WWW folder on the Nginx server
+                    sh "rsync -av . $NGINX_IP:$WWW_PATH"
                 }
             }
         }
