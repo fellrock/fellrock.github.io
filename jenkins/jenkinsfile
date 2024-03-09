@@ -27,10 +27,13 @@ pipeline {
         stage('Copy to Nginx Server') {
             steps {
                 script {
-                    def curlOutput = sh(script: 'curl -T . http://172.17.0.5:80/mnt/user/appdata/nginx/www', returnStatus: true).trim()
-                    echo "curl result: ${curlOutput}"
+                    def curlOutput = sh(script: 'curl -T . http://172.17.0.5:80/mnt/user/appdata/nginx/www', returnStdout: true, returnStatus: true).trim()
+                    def curlExitCode = sh(script: 'echo $?', returnStatus: true).trim()
 
-                    if (curlOutput != '0') {
+                    echo "curl result: ${curlExitCode}"
+                    echo "curl output: ${curlOutput}"
+
+                    if (curlExitCode != '0') {
                         error "Failed to copy files to Nginx server. Check logs for details."
                     }
                 }
