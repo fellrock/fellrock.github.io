@@ -31,7 +31,11 @@ pipeline {
                     // Copy the contents to the specified folder on the Nginx server
                     def result = sh(script: "curl -T . http://$NGINX_IP:$NGINX_PORT/$TARGET_FOLDER", returnStatus: true)
                     echo "curl result: ${result}"
-                    echo "curl output: ${output}"
+                    echo "curl output: ${result}"
+                    
+                    if (result != 0) {
+                        error "Failed to copy files to Nginx server. Check the logs for details."
+                    }
                 }
             }
         }
