@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NGINX_IP = '172.18.0.3'
+        NGINX_IP = '172.17.0.5'
         NGINX_PORT = '80'
         TARGET_FOLDER = 'mnt/user/appdata/nginx/www'
         GITHUB_REPO_URL = 'https://github.com/fellrock/fellrock.github.io.git'
