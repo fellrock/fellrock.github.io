@@ -4,52 +4,23 @@ pipeline {
     environment {
         NGINX_IP = '172.17.0.5'
         NGINX_PORT = '80'
-        TARGET_FOLDER = 'mnt/user/appdata/nginx/www'
+        TARGET_FOLDER = '/mnt/user/appdata/nginx/www'  // Corrigido o caminho da pasta
         GITHUB_REPO_URL = 'https://github.com/fellrock/fellrock.github.io.git'
     }
 
     stages {
-        stage('Delete Existing Content on Nginx') {
-            steps {
-                script {
-                    // Delete existing content on the Nginx server
-                    sh "curl -X DELETE http://$NGINX_IP:$NGINX_PORT/$TARGET_FOLDER"
-                }
-            }
-        }
-
         stage('Clone GitHub Pages') {
             steps {
                 // Clone the GitHub Pages repository
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: GITHUB_REPO_URL]]])
             }
         }
+
         stage('Copy to Nginx Server') {
             steps {
                 script {
-                    try {
-                        def curlCommand = 'curl -T . http://172.17.0.5:80/mnt/user/appdata/nginx/www'
-                        echo "Running command: ${curlCommand}"
-
-                        // Executar o comando curl e capturar a saída
-                        def process = curlCommand.execute()
-                        process.waitFor()
-
-                        // Verificar o código de saída
-                        def curlExitCode = process.exitValue()
-                        echo "curl result: ${curlExitCode}"
-
-                        // Exibir a saída do comando
-                        def curlOutput = process.text
-                        echo "curl output: ${curlOutput}"
-
-                        // Verificar se o comando falhou
-                        if (curlExitCode != 0) {
-                            error "Failed to copy files to Nginx server. Check logs for details."
-                        }
-                    } catch (Exception e) {
-                        error "An error occurred while running the 'curl' command. Error: ${e.message}"
-                    }
+                    // Use rsync to copy files to the specified folder on the Nginx server
+                    sh "rsync -av . $NGINX_IP:$TARGET_FOLDER"
                 }
             }
         }
