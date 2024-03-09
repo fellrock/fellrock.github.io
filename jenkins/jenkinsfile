@@ -30,14 +30,21 @@ pipeline {
                     try {
                         def curlCommand = 'curl -T . http://172.17.0.5:80/mnt/user/appdata/nginx/www'
                         echo "Running command: ${curlCommand}"
-                        
-                        def curlOutput = sh(script: curlCommand, returnStdout: true, returnStatus: true).trim()
-                        def curlExitCode = sh(script: 'echo $?', returnStatus: true).trim()
 
+                        // Executar o comando curl e capturar a saída
+                        def process = curlCommand.execute()
+                        process.waitFor()
+
+                        // Verificar o código de saída
+                        def curlExitCode = process.exitValue()
                         echo "curl result: ${curlExitCode}"
+
+                        // Exibir a saída do comando
+                        def curlOutput = process.text
                         echo "curl output: ${curlOutput}"
 
-                        if (curlExitCode != '0') {
+                        // Verificar se o comando falhou
+                        if (curlExitCode != 0) {
                             error "Failed to copy files to Nginx server. Check logs for details."
                         }
                     } catch (Exception e) {
