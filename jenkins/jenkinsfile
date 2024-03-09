@@ -27,14 +27,21 @@ pipeline {
         stage('Copy to Nginx Server') {
             steps {
                 script {
-                    def curlOutput = sh(script: 'curl -T . http://172.17.0.5:80/mnt/user/appdata/nginx/www', returnStdout: true, returnStatus: true).trim()
-                    def curlExitCode = sh(script: 'echo $?', returnStatus: true).trim()
+                    try {
+                        def curlCommand = 'curl -T . http://172.17.0.5:80/mnt/user/appdata/nginx/www'
+                        echo "Running command: ${curlCommand}"
+                        
+                        def curlOutput = sh(script: curlCommand, returnStdout: true, returnStatus: true).trim()
+                        def curlExitCode = sh(script: 'echo $?', returnStatus: true).trim()
 
-                    echo "curl result: ${curlExitCode}"
-                    echo "curl output: ${curlOutput}"
+                        echo "curl result: ${curlExitCode}"
+                        echo "curl output: ${curlOutput}"
 
-                    if (curlExitCode != '0') {
-                        error "Failed to copy files to Nginx server. Check logs for details."
+                        if (curlExitCode != '0') {
+                            error "Failed to copy files to Nginx server. Check logs for details."
+                        }
+                    } catch (Exception e) {
+                        error "An error occurred while running the 'curl' command. Error: ${e.message}"
                     }
                 }
             }
