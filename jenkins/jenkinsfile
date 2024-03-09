@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Delete existing content on the Nginx server
-                    sh "curl -X DELETE http://$NGINX_IP:$NGINX_PORT"
+                    sh "curl -X DELETE http://$NGINX_IP:$NGINX_PORT/$TARGET_FOLDER"
                 }
             }
         }
