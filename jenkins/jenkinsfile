@@ -9,11 +9,11 @@ pipeline {
     }
 
     stages {
-        stage('Delete Existing Content on Nginx') {
+        stage('Deploy to Nginx') {
             steps {
                 script {
-                    // Delete existing content on the Nginx server
-                    sh "curl -X DELETE http://$NGINX_IP:$NGINX_PORT"
+                    // Use the POST method to deploy to the Nginx server
+                    sh "curl -X POST http://$NGINX_IP:$NGINX_PORT"
                 }
             }
         }
