@@ -29,7 +29,9 @@ pipeline {
             steps {
                 script {
                     // Copy the contents to the specified folder on the Nginx server
-                    sh "curl -T . http://$NGINX_IP:$NGINX_PORT/$TARGET_FOLDER"
+                    def result = sh(script: "curl -T . http://$NGINX_IP:$NGINX_PORT/$TARGET_FOLDER", returnStatus: true)
+                    echo "curl result: ${result}"
+                    echo "curl output: ${output}"
                 }
             }
         }
