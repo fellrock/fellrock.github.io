@@ -28,7 +28,7 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript2.css" /></noscript>
 			
 	<!-- Matomo -->
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 	  var _paq = window._paq = window._paq || [];
 	  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
 	  _paq.push(['trackPageView']);
@@ -40,7 +40,7 @@
 		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
 		g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
 	  })();
-	</script>
+	</script> -->
 	<!-- End Matomo Code -->
 
 	<!-- <script type="text/javascript" src="http://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=8V2YNe3AyEEE1j9Wt5odGlLKE2fUzSRf0SVQRUm6ol8JgtK1P69FVtnnnD3460YTSyI9jBSgZoaTi5efeGC7H2hl8N5Dea9LwGAeVeD4udI" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="http://me.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cDovL2tyYXZlbGEubG9jYWwvbW50L3VzZXIvYXBwZGF0YS9uZ2lueC93d3cvaW5kZXguaHRtbA"/></head> -->
@@ -70,13 +70,7 @@
 						<div id="cv" style="margin-bottom: -15px">
 							<p class="title3"> RESUME </p>
 							
-							<a href="documents/202411221728_CV_FelipeMoreiraPTBR_Soft_Eng.pdf">
-								<img src="images/cv_br.png" width="20%" height="20%"  alt="Currículo Atualizado em Português">
-							</a>
-							
-							<a href="documents/202501071400_CV_FelipeMoreiraENG.pdf">
-								<img src="images/cv_uk.png" width="20%" height="20%"  alt="Updated English Resume">
-							</a>
+    						<div id="links-container"></div>
 
 						</div>
 					</section>
@@ -96,10 +90,47 @@
 
 		<!-- Scripts -->
 			<script>
+
 				if ('addEventListener' in window) {
 					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
 					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
 				}
+
+				// Função para buscar e exibir os links dos arquivos
+				function carregarLinks() {
+					const pasta = "documents/"; // Pasta onde os arquivos estão armazenados
+					const arquivos = [
+						{ sufixo: "_ENG.pdf", imagem: "images/cv_uk.png", alt: "Updated English Resume" },
+						{ sufixo: "_PTBR.pdf", imagem: "images/cv_br.png", alt: "Currículo Atualizado em Português" }
+					];
+
+					const container = document.getElementById("links-container");
+
+					arquivos.forEach(arquivo => {
+						fetch(pasta)
+							.then(response => response.text())
+							.then(data => {
+								// Usando uma expressão regular para encontrar o arquivo com o sufixo correspondente
+								const regex = new RegExp(`href="([^"]*${arquivo.sufixo})"`, "i");
+								const match = data.match(regex);
+
+								if (match && match[1]) {
+									const caminhoArquivo = match[1];
+									const link = document.createElement("a");
+									link.href = caminhoArquivo;
+									link.innerHTML = `<img src="${arquivo.imagem}" width="20%" height="20%" alt="${arquivo.alt}">`;
+									container.appendChild(link);
+								} else {
+									console.warn(`Arquivo com sufixo ${arquivo.sufixo} não encontrado.`);
+								}
+							})
+							.catch(error => console.error("Erro ao carregar os arquivos:", error));
+					});
+				}
+
+				// Executa a função ao carregar a página
+				window.onload = carregarLinks;
+
 			</script>
 	</body>
 </html>
