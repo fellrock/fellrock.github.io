@@ -107,24 +107,11 @@
 					const container = document.getElementById("links-container");
 
 					arquivos.forEach(arquivo => {
-						fetch(pasta)
-							.then(response => response.text())
-							.then(data => {
-								// Usando uma expressão regular para encontrar o arquivo com o sufixo correspondente
-								const regex = new RegExp(`href="([^"]*${arquivo.sufixo})"`, "i");
-								const match = data.match(regex);
-
-								if (match && match[1]) {
-									const caminhoArquivo = match[1];
-									const link = document.createElement("a");
-									link.href = caminhoArquivo;
-									link.innerHTML = `<img src="${arquivo.imagem}" width="20%" height="20%" alt="${arquivo.alt}">`;
-									container.appendChild(link);
-								} else {
-									console.warn(`Arquivo com sufixo ${arquivo.sufixo} não encontrado.`);
-								}
-							})
-							.catch(error => console.error("Erro ao carregar os arquivos:", error));
+						const caminhoArquivo = `${pasta}CV_FelipeMoreira${arquivo.sufixo}`;
+						const link = document.createElement("a");
+						link.href = caminhoArquivo;
+						link.innerHTML = `<img src="${arquivo.imagem}" width="20%" height="20%" alt="${arquivo.alt}">`;
+						container.appendChild(link);
 					});
 				}
 
