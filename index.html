@@ -70,7 +70,13 @@
 						<div id="cv" style="margin-bottom: -15px">
 							<p class="title3"> RESUME </p>
 							
-    						<div id="links-container"></div>
+							<a href="CV_FelipeMoreira_PTBR.pdf">
+								<img src="images/cv_br.png" width="20%" height="20%"  alt="Currículo Atualizado em Português">
+							</a>
+							
+							<a href="CV_FelipeMoreira_ENG.pdf">
+								<img src="images/cv_uk.png" width="20%" height="20%"  alt="Updated English Resume">
+							</a>
 
 						</div>
 					</section>
@@ -90,47 +96,10 @@
 
 		<!-- Scripts -->
 			<script>
-
 				if ('addEventListener' in window) {
 					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
 					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
 				}
-
-				// Função para buscar e exibir os links dos arquivos
-				function carregarLinks() {
-					const pasta = "documents/"; // Pasta onde os arquivos estão armazenados
-					const arquivos = [
-						{ sufixo: "_ENG.pdf", imagem: "images/cv_uk.png", alt: "Updated English Resume" },
-						{ sufixo: "_PTBR.pdf", imagem: "images/cv_br.png", alt: "Currículo Atualizado em Português" }
-					];
-
-					const container = document.getElementById("links-container");
-
-					arquivos.forEach(arquivo => {
-						fetch(pasta)
-							.then(response => response.text())
-							.then(data => {
-								// Usando uma expressão regular para encontrar o arquivo com o sufixo correspondente
-								const regex = new RegExp(`href="([^"]*${arquivo.sufixo})"`, "i");
-								const match = data.match(regex);
-
-								if (match && match[1]) {
-									const caminhoArquivo = match[1];
-									const link = document.createElement("a");
-									link.href = caminhoArquivo;
-									link.innerHTML = `<img src="${arquivo.imagem}" width="20%" height="20%" alt="${arquivo.alt}">`;
-									container.appendChild(link);
-								} else {
-									console.warn(`Arquivo com sufixo ${arquivo.sufixo} não encontrado.`);
-								}
-							})
-							.catch(error => console.error("Erro ao carregar os arquivos:", error));
-					});
-				}
-
-				// Executa a função ao carregar a página
-				window.onload = carregarLinks;
-
 			</script>
 	</body>
 </html>
